@@ -1,0 +1,78 @@
+.column{
+  width: 100%;
+}
+.drrag{
+  width: 100%;
+}
+
+.left-column{
+  width: 20%;
+  height: 50%;
+  background-color: rgb(196, 188, 188);
+  padding: 10px;
+  margin-top: 20px;
+  overflow-y: scroll;
+  float: left;
+  margin-left: 50px;
+  border-bottom: 2px;
+}
+
+.right-column{
+  width: 20%;
+  height: 50%;
+  background-color: rgb(174, 179, 165);
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 800px;
+  overflow-y: scroll;
+  float: right;
+}
+
+.card{
+  height:50%;
+  color: teal;
+  border-color: red;
+  border-radius: 7px;
+} 
+
+.draggable-col{
+  margin-top: 10px;
+}
+
+.draggable-col2{
+  margin-top : 10px;
+}
+
+.column-name{
+  color:rgb(161, 106, 106);
+  
+  text-decoration: royalblue;
+}
+
+.load-less{
+  color: teal;
+  background-color: rgb(136, 214, 19);
+  border-radius: 2cm;
+}
+
+.load-more{
+  color: teal;
+  background-color: rgb(136, 214, 19);
+  border-radius: 2cm;
+}
+
+.load-less2{
+  color: teal;
+  background-color: rgb(136, 214, 19);
+  border-radius: 2cm;
+}
+
+.load-more2{
+  color: teal;
+  background-color: rgb(136, 214, 19);
+  border-radius: 2cm;
+}
+
+
+
+

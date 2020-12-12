@@ -22,7 +22,11 @@ class Dragg extends Component {
   render() { 
     return ( 
                         <div className='drrag'>
+                          {/* <div>
+                            {this.props.cards1[0]}
+                          </div> */}
                           <DragDropContext onDragEnd={this.props.handledDragEnd}>
+
                             <div className="column">
                             <Droppable droppableId={"Card1"}>
                               {(provided) => {
@@ -52,10 +56,9 @@ class Dragg extends Component {
                                               className = "draggable-col"
                                               >
 
-                                                <h5>jhsdhdfzsdfssss</h5>
-
-
+                                                
                                               <Card cardName={card.cardName} cardId={card.id}  cardIndex={id}   />
+                                              <h5>k</h5>
                                             
                                               </div>
 

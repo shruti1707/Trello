@@ -44,6 +44,7 @@ class App extends Component {
     this.loadMore = this.loadMore.bind(this);
 
     this.loadLess = this.loadLess.bind(this);
+
   }
 
   
@@ -132,7 +133,7 @@ class App extends Component {
   }
 
 
-  componentDidMount(){
+  componentWillMount(){
     const existingcard = this.state.items.cards1;
     const existingcard2 = this.state.items.cards2;
 
@@ -160,13 +161,19 @@ class App extends Component {
           })
         })
 
-    this.setState({
-      cards1 : existingcard,
-      cards2 : existingcard2,
+    this.setState(prevState => {
+      let items = Object.assign({}, prevState.items);
+      items.cards1 = existingcard;  
+      items.cards2 = existingcard2;                                  
+      return { items };
+
+
+      
     })
 
-        console.log(this.state.items.cards1)
-        console.log(this.state.items.cards2)
+     console.log(this.state.items.cards1)
+    console.log(this.state.items.cards2)
+
 
       }
 
@@ -174,8 +181,13 @@ class App extends Component {
 
 
   render() { 
+
+   
     return ( 
       <div className="App">
+        <div>
+          {this.state.items.cards1}
+        </div>
 
           <div className="Footer">
               <New  addNewCard={this.addNewCard}/>
@@ -191,7 +203,8 @@ class App extends Component {
                  visible={this.state.visible}
                  loadMore={this.loadMore}
                  loadLess={this.loadLess}
-                 />  
+                 />
+
 
 
           </div>

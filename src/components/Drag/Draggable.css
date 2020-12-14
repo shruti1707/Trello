@@ -8,13 +8,19 @@
 .left-column{
   width: 20%;
   height: 50%;
-  background-color: rgb(196, 188, 188);
+
   padding: 10px;
   margin-top: 20px;
   overflow-y: scroll;
   float: left;
   margin-left: 50px;
   border-bottom: 2px;
+  border-radius: 4px;
+  background-color: #eed; 
+  border-radius: 3px;
+  box-shadow: 43x 3px 2px #333;
+  opacity: 1;
+
 }
 
 .right-column{
@@ -26,6 +32,7 @@
   margin-right: 800px;
   overflow-y: scroll;
   float: right;
+  border-radius: 4px;
 }
 
 .card{
@@ -45,6 +52,8 @@
 
 .column-name{
   color:rgb(161, 106, 106);
+  font-size: 1em;
+    font-family: 'Droid Sans' sans-serif;
   
   text-decoration: royalblue;
 }
@@ -72,6 +81,79 @@
   background-color: rgb(136, 214, 19);
   border-radius: 2cm;
 }
+
+.load-more{
+  border: none;
+  margin-right: 2px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-family: 'Droid Sans' sans-serif;
+  color: #000;
+  background-color: teal;
+  transition: 0.2s ease-out;
+
+}
+
+.load-more:hover{
+  background-color: turquoise;
+  transition: 0.2s ease-out;
+  color: #000;
+}
+
+.load-less{
+  border: none;
+  margin: 0px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-family: 'Droid Sans' sans-serif;
+  color: #000;
+  background-color: teal;
+  transition: 0.2s ease-out;
+
+}
+
+.load-less:hover{
+  background-color: turquoise;
+  transition: 0.2s ease-out;
+  color: #000;
+}
+
+.load-more2{
+  border: none;
+  margin-right: 2px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-family: 'Droid Sans' sans-serif;
+  color: #000;
+  background-color: teal;
+  transition: 0.2s ease-out;
+
+}
+
+.load-more2:hover{
+  background-color: turquoise;
+  transition: 0.2s ease-out;
+  color: #000;
+}
+
+.load-less2{
+  border: none;
+  margin: 0px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-family: 'Droid Sans' sans-serif;
+  color: #000;
+  background-color: teal;
+  transition: 0.2s ease-out;
+
+}
+
+.load-less2:hover{
+  background-color: turquoise;
+  transition: 0.2s ease-out;
+  color: #000;
+}
+
 
 
 

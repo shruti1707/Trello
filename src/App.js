@@ -31,40 +31,122 @@ class App extends Component {
 
     this.state = {
 
-      items : {
+      
         cards1 :[],
         cards2 : [],
-      },
-      
-      
-      visible : 1
-      
-    }
+        visible1 : 5,
+        visible2 : 5,
+      };
 
-    this.loadMore = this.loadMore.bind(this);
-
-    this.loadLess = this.loadLess.bind(this);
 
   }
+
+ 
+
+  componentDidMount(){
+    const existingcard = this.state.cards1;
+    const existingcard2 = this.state.cards2;
+
+    this.database.collection("cards1").get().then( (querySnapshot) => {
+      querySnapshot.forEach( doc => {
+
+        existingcard.push({
+          id : doc.id,
+          cardName : doc.data().cardName,
+          cardNumber : doc.data().cardNumber,
+        })
+
+          })
+        })
+
+    this.database.collection("cards2").get().then( (querySnapshot) => {
+      querySnapshot.forEach( doc => {
+
+        existingcard2.push({
+          id : doc.id, 
+          cardName : doc.data().cardName,
+          cardNumber : doc.data().cardNumber,
+        })
+
+          })
+        })
+
+    this.setState({
+  
+      cards1 : existingcard,
+      cards2 : existingcard2                             
+      
+
+
+      
+    })
+
+    console.log(this.state.cards1)
+    console.log(this.state.cards2)
+    
+
+      }
+
+
 
   
   
 
   addNewCard(cardd,cardn){
-    if(cardn === "Card1"){
+
+
+    
+    
+    if(cardn === "card1" || cardn === "Card1" || cardn === "CARD1" ){
 
       this.database.collection("cards1").add(
         {cardName : cardd , cardNumber : cardn});
 
+
+        const existingcard = this.state.cards1;
+
+        existingcard.push({
+          
+          cardName : cardd,
+          cardNumber : cardn,
+        })
+
+        this.setState({      
+          cards1 : existingcard
+
+        })
+
+
+
     }
-    if(cardn === "Card2"){
+
+
+    if(cardn === "card2" || cardn === "Card2" || cardn === "CARD2"){
 
       this.database.collection("cards2").add(
         {cardName : cardd , cardNumber : cardn});
 
-    }
-    
+        const existingcard2 = this.state.cards2;
+
+
+
+        existingcard2.push({
+          
+          cardName : cardd,
+          cardNumber : cardn,
+        })
+
+        this.setState({
+          
+          cards2 : existingcard2 
+
+  })
+
+                        
+
   }
+
+}
 
 
 
@@ -83,11 +165,11 @@ class App extends Component {
       return
     }
 
-    const existingcard = this.state.items.cards1;
-    const existingcard2 = this.state.items.cards2;
+    const existingcard = this.state.cards1;
+    const existingcard2 = this.state.cards2;
 
 
-    if(source.droppableId === "Card1"){
+    if(source.droppableId === "Card1" && source.droppableId!==destination.droppableId){
       (existingcard[source.index]).cardNumber = "Card2";
       console.log(existingcard[source.index])
       existingcard2.splice(destination.index, 0,  this.state.cards1[source.index])
@@ -96,9 +178,25 @@ class App extends Component {
 
     }
 
-    if(source.droppableId === "Card2"){
+
+    if(source.droppableId === "Card1" && source.droppableId===destination.droppableId){
+    
+      console.log(existingcard[source.index])
+      existingcard.splice(destination.index +1, 0,  this.state.cards1[source.index])
+      existingcard.splice(source.index,1)
+
+
+    }
+
+    if(source.droppableId === "Card2" && source.droppableId!==destination.droppableId){
       (existingcard2[source.index]).cardNumber = "Card1";
       existingcard.splice(destination.index , 0 , this.state.cards2[source.index])
+      existingcard2.splice(source.index,1)
+    }
+
+    if(source.droppableId === "Card2" && source.droppableId===destination.droppableId){
+      
+      existingcard2.splice(destination.index +1, 0 , this.state.cards2[source.index])
       existingcard2.splice(source.index,1)
     }
 
@@ -120,64 +218,32 @@ class App extends Component {
     
 
 
-  loadMore() {
+  loadMore1 = () => {
     this.setState((prev) => {
-      return {visible: prev.visible + 4};
+      return {visible1: prev.visible1 + 4};
     });
   }
 
-  loadLess() {
+  loadLess1 = ()  =>{
     this.setState((prev) => {
-      return {visible: prev.visible - 4};
+      return {visible1: prev.visible1 - 4};
     });
   }
 
 
-  componentWillMount(){
-    const existingcard = this.state.items.cards1;
-    const existingcard2 = this.state.items.cards2;
+  loadMore2 = () => {
+    this.setState((prev) => {
+      return {visible2: prev.visible2 + 4};
+    });
+  }
 
-    this.database.collection("cards1").get().then( snap => {
-      snap.forEach( doc => {
+  loadLess2 = ()  =>{
+    this.setState((prev) => {
+      return {visible2: prev.visible2 - 4};
+    });
+  }
 
-        existingcard.push({
-          id : doc.id,
-          cardName : doc.data().cardName,
-          cardNumber : doc.data().cardNumber,
-        })
-
-          })
-        })
-
-    this.database.collection("cards2").get().then( snap => {
-      snap.forEach( doc => {
-
-        existingcard2.push({
-          id : doc.id, 
-          cardName : doc.data().cardName,
-          cardNumber : doc.data().cardNumber,
-        })
-
-          })
-        })
-
-    this.setState(prevState => {
-      let items = Object.assign({}, prevState.items);
-      items.cards1 = existingcard;  
-      items.cards2 = existingcard2;                                  
-      return { items };
-
-
-      
-    })
-
-     console.log(this.state.items.cards1)
-    console.log(this.state.items.cards2)
-
-
-      }
-
-
+  
 
 
   render() { 
@@ -185,37 +251,37 @@ class App extends Component {
    
     return ( 
       <div className="App">
-        <div>
-          {this.state.items.cards1}
-        </div>
+
+          <div className="Dragg">
+
+                          
+                      
+          <Dragg
+          handledDragEnd={this.handledDragEnd}
+          cards1={this.state.cards1}
+          cards2={this.state.cards2}
+          visible1={this.state.visible1}
+          visible2={this.state.visible2}
+          loadMore1={this.loadMore1}
+          loadLess1={this.loadLess1}
+          loadMore2={this.loadMore2}
+          loadLess2={this.loadLess2}
+
+          />
+
+
+
+          </div>
 
           <div className="Footer">
               <New  addNewCard={this.addNewCard}/>
-          </div>
-          <div className="Dragg">
-
-                
-            
-                <Dragg
-                handledDragEnd={this.handledDragEnd}
-                 cards1={this.state.items.cards1}
-                 cards2={this.state.items.cards2}
-                 visible={this.state.visible}
-                 loadMore={this.loadMore}
-                 loadLess={this.loadLess}
-                 />
-
-
-
-          </div>
-                        
-
-          
+          </div>    
         
       </div>
      );
   }
 }
+
  
 export default App;
 

@@ -43,7 +43,7 @@ class Dragg extends Component {
                          
                                 {
                               
-                                  this.props.cards1.slice(0,this.props.visible).map((card, id) => {
+                                  this.props.cards1.slice(0,this.props.visible1).map((card, id) => {
                                       return(
 
                                         <Draggable key ={id} index={id} draggableId={(card.id)}>
@@ -57,8 +57,8 @@ class Dragg extends Component {
                                               >
 
                                                 
-                                              <Card cardName={card.cardName} cardId={card.id}  cardIndex={id}   />
-                                              <h5>k</h5>
+                                              <Card cardName={card.cardName} cardId={card.id}  cardIndex={id} key={card.id}   />
+                                              
                                             
                                               </div>
 
@@ -70,12 +70,12 @@ class Dragg extends Component {
                                           })
                                 }
 
-                                {this.props.visible < this.props.cards1.length &&
-                                  <button onClick={this.props.loadMore} type="button" className="load-more">Load more</button>
+                                {this.props.visible1 < this.props.cards1.length &&
+                                  <button onClick={this.props.loadMore1} type="button" className="load-more">Load more</button>
                                 }
 
                                 {this.props.cards1.length > 0 && 
-                                <button onClick={this.props.loadLess} type="button" className="load-less">Load less</button>
+                                <button onClick={this.props.loadLess1} type="button" className="load-less">Load less</button>
                                 }
 
                                 {provided.placeholder}
@@ -104,7 +104,7 @@ class Dragg extends Component {
                                 <h5 className="column-name">Card2</h5>
 
                                 {
-                                this.props.cards2.slice(0,this.props.visible).map((card2 , id) => {
+                                this.props.cards2.slice(0,this.props.visible2).map((card2 , id) => {
                                 return(
                                     <Draggable key ={id} index={id} draggableId={(card2.id)}>
                                     {(provided)=> {
@@ -131,12 +131,12 @@ class Dragg extends Component {
                                 }
 
 
-                                {this.props.visible < this.props.cards2.length &&
-                                  <button onClick={this.props.loadMore} type="button" className="load-more2">Load More</button>
+                                {this.props.visible2 < this.props.cards2.length &&
+                                  <button onClick={this.props.loadMore2} type="button" className="load-more2">Load More</button>
                                 }
 
                                 { this.props.cards2.length > 0&&
-                                  <button onClick={this.props.loadLess} type="button" className="load-less2">Load Less</button>
+                                  <button onClick={this.props.loadLess2} type="button" className="load-less2">Load Less</button>
                                 }
 
                                 {provided.placeholder}

@@ -4,19 +4,23 @@ import PropTypes from 'prop-types';
 class Card extends Component {
     constructor(props){
         super(props)
-        this.state = {}
+    
+
+        this.cardIndex = props.cardIndex;
+        this.cardName = props.cardName;
+        this.cardId = props.cardId;
         
     }
-    render() { 
+    render(props) { 
         return (
     
-            <div className="Card fade-in">
+            <div className="Card">
 
-                    <div className="card">
+                    <div className="card fade-in">
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">{this.props.cardIndex}</li>
-                        <li className="list-group-item">{this.props.cardName}</li>
-                        <li className="list-group-item">{this.props.cardId}</li>
+                        <li className="list-group-item">{this.cardIndex}</li>
+                        <li className="list-group-item">{this.cardName}</li>
+                        
                         
                     </ul>
                     </div>

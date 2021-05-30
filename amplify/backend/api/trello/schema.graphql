@@ -1,0 +1,6 @@
+type task @model {
+  id: ID!
+  name: String!
+  
+}
+

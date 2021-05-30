@@ -1,0 +1,45 @@
+.newbutton{
+    border: none;
+    margin: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 10px 24px;
+    font-size: 1.3em;
+    font-family: 'Droid Sans' sans-serif;
+    background-color: teal;
+    transition: 0.2s ease-out;
+
+}
+
+.newbutton:hover{
+    background-color: turquoise;
+    transition: 0.2s ease-out;
+    color: #000;
+}
+
+.cardname{
+    
+    height: 47px;
+    font-size: 1em;
+    padding-left: 20px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-family: 'Droid Sans', sans-serif;
+    background-color: white;
+    
+    transition: 0.2s ease-out;
+
+}
+
+.newcardinput{
+    height: 47px;
+    font-size: 1em;
+    padding-left: 20px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-family: 'Droid Sans', sans-serif;
+    background-color: white;
+    
+    transition: 0.2s ease-out;
+
+}

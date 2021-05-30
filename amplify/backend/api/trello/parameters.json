@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "trello",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authtrello6c90c90b",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
